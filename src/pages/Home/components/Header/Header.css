@@ -1,0 +1,21 @@
+.header{
+    height:0.8rem;
+    line-height: 0.8rem;
+}
+.header header img{
+    width: 2rem;
+}
+.header header{
+    position: relative;
+}
+.header header span{
+    position: absolute;
+    top: 0.15rem;
+    right: 2rem;
+    width: 2rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    text-align: center;
+    border-radius: 0.6rem;
+    background-color: #cccccc;
+}
