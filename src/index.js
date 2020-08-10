@@ -16,10 +16,10 @@ import store from "./store"
 Component.prototype.$img = "http://localhost:3000"
 
 ReactDOM.render(
-  // <Provider store={store}> 
+  <Provider store={store}> 
     <HashRouter >
       <App />
-    </HashRouter>,
-  // </Provider>,
+    </HashRouter>
+    </Provider>,
   document.getElementById('root')
 );

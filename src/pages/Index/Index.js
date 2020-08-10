@@ -21,22 +21,22 @@ export default class Index extends Component {
 
 
                 <footer>
-                <NavLink to="/index/home" activeClassName="select">
-                   <span className="bg1"></span>
-                   <p> 首页</p>
+                    <NavLink to="/index/home" activeClassName="select">
+                        <span className="bg1"></span>
+                        <p> 首页</p>
                     </NavLink>
                     <NavLink to="/index/fenlei" activeClassName="select">
-                    <span className="bg2"></span>
-                      <p>分类</p>
-                        </NavLink>
+                        <span className="bg2"></span>
+                        <p>分类</p>
+                    </NavLink>
                     <NavLink to="/index/car" activeClassName="select">
-                    <span className="bg3"></span>
-                       <p> 购物车</p>
-                        </NavLink>
+                        <span className="bg3"></span>
+                        <p> 购物车</p>
+                    </NavLink>
                     <NavLink to="/index/mine" activeClassName="select">
-                    <span className="bg4"></span>
-                       <p> 我的</p>
-                        </NavLink>
+                        <span className="bg4"></span>
+                        <p> 我的</p>
+                    </NavLink>
                 </footer>
             </div>
         )

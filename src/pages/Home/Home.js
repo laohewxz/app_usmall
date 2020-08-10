@@ -1,46 +1,24 @@
 import React, { Component } from 'react'
+
+import { Switch, Route, Redirect, NavLink } from "react-router-dom"
 import Header from "./components/Header/Header"
 import Banner from "./components/Banner/Banner"
 import Nav from "./components/Nav/Nav"
 import List from "./components/List/List"
-import { getBanner, getIndexGoods } from "../../utils/request"
-export default class Index extends Component {
-    constructor() {
-        super()
-        this.state = {
-            banner: [],
-            list:[]
-        }
-    }
-    componentDidMount() {
-        //获取到banner图
-        getBanner().then(res => {
-            var arr = res.data.list;
-            arr.forEach(item => {
-                // 给banner图地址加上http://localhost:3000
-                item.img = this.$img + item.img
-            })
-            this.setState({
-                banner: arr
-            })
-        })
 
-        //获取到商品列表
-        getIndexGoods().then(res=>{
-            var arr = res.data.list[0].content;
-            // console.log(arr)
-            arr.forEach(item=>{
-                item.img = this.$img+item.img
-            })
-            this.setState({
-                list:arr
-            })
-        })
+import {connect} from "react-redux"
+import {banner,requestBannerAction,list,requestListAction} from "../../store"
+
+class Home extends Component {
+    componentDidMount() {
+        this.props.getBanner()//获取轮播图
+        this.props.getIndexGoods()//获取轮播图
     }
     render() {
-        const { banner,list } = this.state
+        const {banner,list} = this.props
         return (
             <div className="home">
+                  
                 <Header></Header>
                 <Banner banner={banner}></Banner>
                 <Nav></Nav>
@@ -49,3 +27,16 @@ export default class Index extends Component {
         )
     }
 }
+const mapStateToProps=(state)=>{
+    return  {
+       banner:banner(state),
+       list:list(state)
+    }
+}
+const mapDispatchToProps=dispatch=>{
+    return {
+       getBanner:()=>dispatch(requestBannerAction()),
+       getIndexGoods:()=>dispatch(requestListAction())
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Home)

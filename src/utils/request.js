@@ -29,3 +29,11 @@ export const getBanner=()=>{
         method:"get"
     })
  }
+
+ //获取详情
+ export const getDetail=(params)=>{
+    return axios({
+        url:"/api/getgoodsinfo",
+        params
+    })
+}
