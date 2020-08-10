@@ -12,27 +12,23 @@ export default class ClassGoods extends Component {
         }
     }
     componentDidMount() {
-        const id = querystring.parse(this.props.location.search.slice(1)).id
-        getClassgoods({ fid: id }).then(res => {
+        const id = querystring.parse(this.props.location.search.slice(1))
+        console.log(id,'ppppppp')
+        this.setState({
+            name:id.name
+        })
+        getClassgoods({ fid: id.id }).then(res => {
             this.setState({
                 list: res.data.list
             })
-            console.log(this.state.list)
-
-
-            // getCate().then(res => {
-            //     this.setState({
-            //         name: res.data.list[id]
-            //     })
-            //     console.log(this.state.name)
-            // })
 
         })
     }
     render() {
-        const { list } = this.state
+        const { list ,name} = this.state
         return (
             <div className="ClassGoods">
+                <nav>{name}</nav>
                 <ul>
                     {
                         list.map(item => {
@@ -41,7 +37,7 @@ export default class ClassGoods extends Component {
                                     <img src={item.img} alt="" />
                                     <div>
                                         <p>{item.goodsname}</p>
-                                        <p>￥{item.price}</p>
+                                        <p className="price">￥{item.price}</p>
                                         <span>立即抢购</span>
                                     </div>
                                 </li>

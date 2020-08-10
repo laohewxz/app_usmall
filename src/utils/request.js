@@ -1,4 +1,5 @@
 import axios from "axios"
+import qs from "qs"
 
 //响应拦截
 axios.interceptors.response.use(res=>{
@@ -43,5 +44,29 @@ export const getClassgoods=(params)=>{
     return axios({
         url:"/api/getgoods",
         params
+    })
+}
+//登录
+export const requestLogin=(params)=>{
+    return axios({
+        url:"/api/login",
+        method:"post",
+        data:qs.stringify(params)
+    })
+}
+//注册
+export const requestReg=(params)=>{
+    return axios({
+        url:"/api/register",
+        method:"post",
+        data:qs.stringify(params)
+    })
+}
+//购物车添加
+export const requestCaradd=(params)=>{
+    return axios({
+        url:"/api/cartadd",
+        method:"post",
+        data:qs.stringify(params)
     })
 }

@@ -1,3 +1,6 @@
+.detail{
+    position: relative;
+}
 .detail nav{
     height: 0.8rem;
     background-color: orange;
@@ -9,14 +12,41 @@
     width: 100vw;
     height: 5rem;
 }
+.detail .imgbox{
+    width: 100vw;
+    height: 2rem;
+    padding-bottom: 5rem;
+}
 .detail .des{
+   box-sizing: border-box;
+   padding-left: 0.2rem;
+   position: absolute;
+   top: 5.8rem;
     height: 3rem;
+    width: 100vw;
 }
 .detail .des .name{
     height: 1rem;
     line-height: 1rem;
     font-size: .35rem;
-    background-color: wheat;
+}
+.detail .des .hot{
+    margin-bottom: 0.2rem;
+}
+.detail .des .hot i{
+    font-style: normal;
+    color: red;
+}
+.detail .des del{
+  color: #a39f9f;
+}
+.detail .des .hot em{
+    font-style: normal;
+    padding: 0.1rem;
+    margin: 0 0.1rem;
+    border: 0.03rem solid orange;
+    border-radius: .06rem;
+    color: orange;
 }
 .detail .des span{
     height: 1rem;
@@ -49,14 +79,21 @@
     text-align: center;
     color: white;
 }
-.detail .goods{
-    position: relative;
+.detail .cover{
     position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    bottom: 0;
+    left: 0;
+}
+.detail .goods{
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100vw;
     height: 5rem;
-    background-color: rgb(151, 129, 129);
+    background-color:white;
 }
 .detail .goods img{
     width: 2rem;
@@ -68,7 +105,11 @@
     top: .5rem;
 }
 .detail .goods .size{
+    margin-top: 1rem;
   margin: 0.2rem;
+}
+.detail .goods .pic{
+   height: 2.3rem;
 }
 .detail .goods .size span{
     display: inline-block;
