@@ -1,0 +1,90 @@
+.detail nav{
+    height: 0.8rem;
+    background-color: orange;
+    line-height: 0.8rem;
+    text-align: center;
+    color: white;
+}
+.detail .img{
+    width: 100vw;
+    height: 5rem;
+}
+.detail .des{
+    height: 3rem;
+}
+.detail .des .name{
+    height: 1rem;
+    line-height: 1rem;
+    font-size: .35rem;
+    background-color: wheat;
+}
+.detail .des span{
+    height: 1rem;
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
+    float: right;
+    font-size: .28rem;
+    color: orangered;
+    border-left: 0.01rem solid #cccccc;
+}
+
+.detail .like{
+    padding-top: 0.2rem;
+    width: 0.3rem;
+}
+
+.detail .footer{
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    left: 0;
+    height: 1rem;
+    width: 100vw;
+    line-height: 1rem;
+}
+.detail .footer span{
+    float: right;
+    width: 2rem;
+    background-color: orange;
+    text-align: center;
+    color: white;
+}
+.detail .goods{
+    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 5rem;
+    background-color: rgb(151, 129, 129);
+}
+.detail .goods img{
+    width: 2rem;
+    border-radius: 0.2rem;
+    margin: 0.2rem;
+}
+.detail .goods .name{
+    position: absolute;
+    top: .5rem;
+}
+.detail .goods .size{
+  margin: 0.2rem;
+}
+.detail .goods .size span{
+    display: inline-block;
+  margin: 0.2rem .1rem;
+  padding: 0.1rem 0.2rem;
+  border: 0.02rem solid black;
+  border-radius: 0.1rem;
+
+}
+.detail .goods .size .car{
+ text-align: center;
+}
+.detail .goods .size .car span{
+ border: none;
+ height: 0.6rem;
+ line-height: 0.6rem;
+ background-color: orange;
+ color: white;
+}

@@ -37,3 +37,11 @@ export const getBanner=()=>{
         params
     })
 }
+
+//获取分类商品
+export const getClassgoods=(params)=>{
+    return axios({
+        url:"/api/getgoods",
+        params
+    })
+}

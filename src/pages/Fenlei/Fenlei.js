@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getCate } from "../../utils/request"
 import "./Fenlei.css"
+import {NavLink} from "react-router-dom"
 
 export default class Fenlei extends Component {
     constructor() {
@@ -15,7 +16,7 @@ export default class Fenlei extends Component {
             this.setState({
                 list: res.data.list
             })
-            console.log(this.state.list)
+            // console.log(this.state.list)
         })
     }
     changeN(index){
@@ -44,8 +45,10 @@ export default class Fenlei extends Component {
                         {
                             list.length>0?list[n].children.map(item=>{
                                 return <div key={item.id} className="box">
+                                    <NavLink to ={"/classgoods?id="+item.id}>
                                     <img src={this.$img+item.img} alt=""/>
-                                 <p>  {item.catename}</p>
+                                    <p>{item.catename}</p>
+                                 </NavLink>
                                 </div>
                             }):null
                         }
