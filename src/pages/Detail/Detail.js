@@ -5,6 +5,7 @@ import { goodsdetail, requestDetailAction } from "../../store"
 import "./Detail.css"
 import dd from ".././../assets/img/img/cart_on.png"
 import {requestCaradd} from "../../utils/request"
+import {successAlert} from "../../utils/Alert"
 
 class Detail extends Component {
     constructor() {
@@ -40,6 +41,8 @@ class Detail extends Component {
         }
         requestCaradd(obj).then(res=>{
         })
+        successAlert("添加成功")
+        
     }
 
     render() {
@@ -68,6 +71,7 @@ class Detail extends Component {
                                         </p>
                                         <p><del>￥{item.market_price}</del></p>
                                     </div>
+                                    
                                 </div>
                                 <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
                                 <div className="footer">
@@ -105,7 +109,6 @@ class Detail extends Component {
                         )
                     })
                 }
-                {/* <Footer></Footer> */}
             </div>
         )
     }

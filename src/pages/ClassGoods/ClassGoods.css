@@ -2,11 +2,17 @@
     width: 2rem;
 }
 .ClassGoods nav{
+    position: relative;
     height: 0.8rem;
     background-color: orange;
     line-height: 0.8rem;
     color: white;
     text-align: center;
+}
+.ClassGoods nav div{
+   position: absolute ;
+   left: 0;
+   margin-left: 0.2rem;
 }
 .ClassGoods li {
     padding-left: 0.3rem;

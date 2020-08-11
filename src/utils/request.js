@@ -70,3 +70,27 @@ export const requestCaradd=(params)=>{
         data:qs.stringify(params)
     })
 }
+//购物车列表
+export const getCarList=(params)=>{
+    return axios({
+        url:"/api/cartlist",
+        params
+    })
+}
+
+//修改数量
+export const requestShopEdit = (data) => {
+    return axios({
+        url: "/api/cartedit",
+        method:"post",
+        data: qs.stringify(data)
+    })
+}
+//点击删除
+export const requestDel = (data) => {
+    return axios({
+        url: "/api/cartdelete",
+        method:"post",
+        data: qs.stringify(data)
+    })
+}

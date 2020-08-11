@@ -1,6 +1,7 @@
 .banner{
     touch-action: none;
     height: 4rem;
+    padding-top: 0.8rem;
 }
 .slider-list,.slider-slide{
     height: 4rem !important;

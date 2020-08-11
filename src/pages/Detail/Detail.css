@@ -1,7 +1,13 @@
 .detail{
     position: relative;
+    padding-top: 0.8rem;
+    padding-bottom: 1rem;
 }
 .detail nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 0.8rem;
     background-color: orange;
     line-height: 0.8rem;
@@ -120,6 +126,7 @@
 
 }
 .detail .goods .size .car{
+    margin-top: -1rem;
  text-align: center;
 }
 .detail .goods .size .car span{

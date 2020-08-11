@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware } from "redux"
 import thunk from "redux-thunk"
-import { getBanner, getIndexGoods, getDetail, getCate } from "../utils/request"
+import { getBanner, getIndexGoods, getDetail, getCate,getCarList,requestShopEdit,requestDel } from "../utils/request"
 //初始状态
 const initState = {
     banner: [],//轮播图
     list: [],//获取列表
     goodsdetail: [],//列表详情
     listfenlei: [],//分类列表
+    carList:[],//购物车列表
+    isEditor:false,//是否编辑
+    isAll:false,//是否全选
 }
 
 //========================轮播图============================
@@ -72,11 +75,57 @@ export const requestFenleiAction = () => {
             return;
         }
         getCate().then(res => {
-            console.log(res.data.list, 'ppp')
+            // console.log(res.data.list, 'ppp')
             dispatch(changeFenlei(res.data.list))
         })
     }
 }
+//====================购物车列表=============================
+const changCarList = (arr)=>{
+    return {type:"changCarList",list:arr} 
+}
+//打开页面就获取数据
+export const requestCarListAction=(uid)=>{
+    return (dispatch,getState)=>{
+        getCarList({uid:uid}).then(res=>{
+            const list = res.data.list?res.data.list:[]
+            list.forEach(item=>{
+                item.checked = false
+            })
+            dispatch(changCarList(list))
+        })
+    }
+}
+//修改编辑
+export const changeIsEditoraction=()=>({
+    type:"changeIsEditor"
+})
+export const changeIsAllaction=()=>({
+    type:"changeIsAll"
+})
+//修改某条数据的checked
+export const changeOneAction=(index)=>({
+    type:"changeOne",index
+})
+//点击- +
+export const requestEditAction=(data)=>{
+    return (dispatch,getState)=>{
+        requestShopEdit(data).then(res=>{
+            const uid = sessionStorage.getItem("uid")
+            dispatch(requestCarListAction(uid))
+        })
+    }
+}
+//点击删除
+export const requestDelAction=(id)=>{
+    return (dispatch)=>{
+        requestDel({id:id}).then(res=>{
+            const uid = sessionStorage.getItem("uid")
+            dispatch(requestCarListAction(uid))
+        })
+    }
+}
+
 
 
 
@@ -112,6 +161,38 @@ const reducer = (state = initState, action) => {
                 ...state,
                 listfenlei: action.list
             }
+        //修改购物车列表
+        case "changCarList":
+            //{type:"changCarList",list:[]} 
+            return {
+                ...state,
+                carList:action.list
+            }
+        //修改编辑
+        case "changeIsEditor":
+            return {
+                ...state,
+                isEditor:!state.isEditor
+            }
+        //修改全选
+        case "changeIsAll":
+            return {
+                ...state,
+                isAll:!state.isAll,
+                carList:state.carList.map(item=>{
+                    item.checked = !state.isAll;
+                    return item
+                })
+            }
+        //修改某条数据的checked
+        case "changeOne":
+            const {carList} = state
+            carList[action.index].checked=!carList[action.index].checked
+            return {
+                ...state,
+                carList:[...carList],
+                isAll:carList.every(item=>item.checked)
+            }
         default:
             return state;
     }
@@ -124,5 +205,16 @@ export const banner = (state) => state.banner
 export const list = (state) => state.list
 export const goodsdetail = (state) => state.goodsdetail
 export const listfenlei = (state) => state.listfenlei
+export const carList = (state) => state.carList
+export const isEditor = (state) => state.isEditor
+export const isAll = (state) => state.isAll
+export const Allprice = (state)=>{
+    var sum =0;
+    const {carList} = state
+    carList.forEach(item=>{
+        sum +=item.price*item.num
+    })
+    return sum
+}
 
 export default store

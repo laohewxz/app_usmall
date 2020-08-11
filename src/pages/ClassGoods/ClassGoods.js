@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import querystring from "querystring"
 import { getClassgoods ,getCate} from "../../utils/request"
 import "./ClassGoods.css"
+import GoBack from "../../components/GoBack"
 
 export default class ClassGoods extends Component {
     constructor() {
@@ -28,7 +29,10 @@ export default class ClassGoods extends Component {
         const { list ,name} = this.state
         return (
             <div className="ClassGoods">
-                <nav>{name}</nav>
+                <nav>
+                    <GoBack className="back"></GoBack>
+                    {name}
+                </nav>
                 <ul>
                     {
                         list.map(item => {

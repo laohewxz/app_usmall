@@ -1,9 +1,13 @@
+.index{
+    padding-bottom: 1rem;
+}
 .index footer {
     background-color: #fff;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100vw;
+    border-top: 0.01rem solid #ccc;
     /* height: 0.8rem; */
     
     display: flex;
