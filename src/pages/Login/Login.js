@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route, Redirect, NavLink } from "react-router-dom"
 import "./Login.css"
 import {requestLogin} from "../../utils/request"
+import {successAlert} from "../../utils/Alert"
 
 export default class Login extends Component {
     constructor(){
@@ -27,9 +28,9 @@ export default class Login extends Component {
             //存入uid到session
             sessionStorage.setItem("uid",res.data.list.uid)
             this.props.history.push("/index")
-            alert(res.data.msg)
+            successAlert(res.data.msg)
         }else{
-            alert(res.data.msg)
+            successAlert(res.data.msg)
             this.setState({
                 user:{
                     phone:'',

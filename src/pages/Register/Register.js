@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Switch, Route, Redirect, NavLink } from "react-router-dom"
 import "./Register.css"
 import {requestReg} from "../../utils/request"
+import {successAlert} from "../../utils/Alert"
+import GoBack from "../../components/GoBack"
 
 export default class Register extends Component {
     constructor(){
@@ -26,9 +28,9 @@ export default class Register extends Component {
         requestReg(this.state.user).then(res=>{
             if(res.data.code === 200){
                 this.props.history.push("/login")
-                alert(res.data.msg)
+                successAlert(res.data.msg)
             }else{
-                alert(res.data.msg)
+                successAlert(res.data.msg)
             }
         }) 
     }
@@ -37,7 +39,10 @@ export default class Register extends Component {
         return (
             <div>
                 <div className="reg">
-                <nav>注册</nav>
+                <nav>
+                    <GoBack></GoBack>
+                    注册
+                </nav>
                 <div className="form">
                     <div className="inp">
                         手机号：<input type="text" value={user.phone} onChange={(e)=>this.changeUser(e,'phone')}/>

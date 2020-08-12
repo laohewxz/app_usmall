@@ -9,6 +9,7 @@ import noedit from "../../assets/img/editor_nor.png"
 import {successAlert} from "../../utils/Alert"
 import GoBack from "../../components/GoBack"
 import { carList, requestCarListAction, changeIsEditoraction, isEditor, isAll, changeIsAllaction, changeOneAction, requestEditAction ,Allprice,requestDelAction} from "../../store"
+import cc from "../../assets/img/tab_shopping_nor.png"
 
 class Car extends Component {
     componentDidMount() {
@@ -66,7 +67,16 @@ class Car extends Component {
                     }
                 </ul>
 
-              
+              {
+                //   console.log(typeof carList)
+                carList.length>0?null:(
+                    <div className="cover">
+                       <div className="inner"> <img src={cc} alt=""/></div>
+                        <p>购物车还是空的<br/>快去逛逛吧~</p>
+                    </div>
+                )
+                  
+              }
 
                 {/* 底部 */}
                 <div className="footer">

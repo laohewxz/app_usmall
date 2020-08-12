@@ -6,6 +6,7 @@ import "./Detail.css"
 import dd from ".././../assets/img/img/cart_on.png"
 import {requestCaradd} from "../../utils/request"
 import {successAlert} from "../../utils/Alert"
+import GoBack from "../../components/GoBack"
 
 class Detail extends Component {
     constructor() {
@@ -49,7 +50,10 @@ class Detail extends Component {
         const { goodsdetail } = this.props
         return (
             <div className="detail">
-                <nav>商品详情</nav>
+                <nav>
+                    <GoBack></GoBack>
+                    商品详情
+                </nav>
                 {
                     goodsdetail.map(item => {
                         return (
