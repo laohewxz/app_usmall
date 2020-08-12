@@ -12,6 +12,7 @@
     background-color: orange;
     line-height: 0.8rem;
     text-align: center;
+    z-index: 999;
     color: white;
 }
 .detail nav div{
@@ -139,4 +140,8 @@
  line-height: 0.6rem;
  background-color: orange;
  color: white;
+}
+.detail .active{
+    border-color: orange !important;
+    color: orange;
 }

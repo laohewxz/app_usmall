@@ -88,7 +88,7 @@ class Car extends Component {
                         <img src={isEditor ? edit : noedit} alt="" />
                         <div>编辑</div>
                     </div>
-                <div className="all">合计：{Allprice}</div>
+                <div className="all">合计：￥{Allprice}</div>
                     <div className="sum">去结算</div>
                 </div>
             </div>

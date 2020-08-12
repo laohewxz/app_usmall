@@ -4,8 +4,8 @@ import { connect } from "react-redux"
 import { goodsdetail, requestDetailAction } from "../../store"
 import "./Detail.css"
 import dd from ".././../assets/img/img/cart_on.png"
-import {requestCaradd} from "../../utils/request"
-import {successAlert} from "../../utils/Alert"
+import { requestCaradd } from "../../utils/request"
+import { successAlert } from "../../utils/Alert"
 import GoBack from "../../components/GoBack"
 
 class Detail extends Component {
@@ -13,6 +13,7 @@ class Detail extends Component {
         super()
         this.state = {
             show: false,
+            num:0
         }
     }
     componentDidMount() {
@@ -25,29 +26,35 @@ class Detail extends Component {
             show: true
         })
     }
-    isnone(e){
-        if(e.target.className==="cover"){
-        this.setState({
-            show: false
-        })
+    isnone(e) {
+        if (e.target.className === "cover") {
+            this.setState({
+                show: false
+            })
         }
     }
 
-    add(){
-        const uid =sessionStorage.getItem('uid')
-        let obj={
-            uid:uid,
-            goodsid:this.props.goodsdetail[0].id,
-            num:'1',
+    add() {
+        const uid = sessionStorage.getItem('uid')
+        let obj = {
+            uid: uid,
+            goodsid: this.props.goodsdetail[0].id,
+            num: '1',
         }
-        requestCaradd(obj).then(res=>{
+        requestCaradd(obj).then(res => {
         })
         successAlert("添加成功")
-        
+
+    }
+    change(e,index) {
+        this.setState({
+            num:index
+        })
     }
 
     render() {
         const { goodsdetail } = this.props
+        const { num } = this.state
         return (
             <div className="detail">
                 <nav>
@@ -63,19 +70,19 @@ class Detail extends Component {
                                     <div className="des">
                                         <p className="name"> {item.goodsname} <span><img src={dd} alt="" className="like" />收藏</span></p>
                                         <p className="hot">
-                                           <i> ￥{item.price}</i>
+                                            <i> ￥{item.price}</i>
                                             {
-                                                item.ishot===1?
-                                                (<em>热卖</em>):null
+                                                item.ishot === 1 ?
+                                                    (<em>热卖</em>) : null
                                             }
                                             {
-                                                item.isnew===1?
-                                                (<em>新品</em>):null
+                                                item.isnew === 1 ?
+                                                    (<em>新品</em>) : null
                                             }
                                         </p>
                                         <p><del>￥{item.market_price}</del></p>
                                     </div>
-                                    
+
                                 </div>
                                 <div dangerouslySetInnerHTML={{ __html: item.description }}></div>
                                 <div className="footer">
@@ -84,7 +91,7 @@ class Detail extends Component {
 
                                 {this.state.show ?
                                     (
-                                        <div className="cover" onClick={(e)=>this.isnone(e)}>
+                                        <div className="cover" onClick={(e) => this.isnone(e)}>
                                             <div className="goods">
                                                 <div className="pic">
                                                     <img src={item.img} alt="" />
@@ -94,13 +101,13 @@ class Detail extends Component {
                                                     <p>{item.specsname}</p>
                                                     <p>
                                                         {
-                                                            JSON.parse(item.specsattr).map(i => {
-                                                                return <span key={i} >{i}</span>
+                                                            JSON.parse(item.specsattr).map((i,index) => {
+                                                                return <span key={i} onClick={(e) => this.change(e,index)}  className={index===num?"active":""}>{i}</span>
                                                             })
                                                         }
                                                     </p>
                                                     <p className="car">
-                                                        <span onClick={()=>this.add()}>加入购物车</span>
+                                                        <span onClick={() => this.add()}>加入购物车</span>
                                                     </p>
                                                 </div>
                                             </div>
